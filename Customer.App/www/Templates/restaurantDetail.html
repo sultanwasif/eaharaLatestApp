@@ -1,0 +1,209 @@
+<ion-view view-title="Restaurant Details" class="" cache-view="false">
+    <ion-content class="background" overflow-scroll="false">
+
+        <div class="card text-center">
+            <p class='mar-0' ng-if="LocationSelected" ui-sref="locations">Delivering Near to {{LocInfo.Name}} <a> Change</a></p>
+            <p class='mar-0' ng-if="!LocationSelected" ui-sref="locations">Select Nearby Location Point </p>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <img class="w-100" style="border-radius:10px;" src="{{basePath}}{{Shop.Image}}">
+                <span style="color:red;" ng-if="Shop.StartTime > CurrentTime || Shop.EndTime < CurrentTime"><b>Closed</b></span>
+                <span style="color:green;" ng-if="Shop.StartTime < CurrentTime && Shop.EndTime > CurrentTime"><b>Open Now</b></span>
+            </div>
+            <div class="col">
+                <h3>{{Shop.Name}}</h3>
+                <p><b>{{Shop.TagLine}}</b></p>
+                <button class="ratbutton"> <i class="icon icon ion-star"></i> {{Shop.AverageRating}} / 5</button>
+                <p>{{Shop.ShopCategory.Name}}</p>
+
+                <!--
+                <p> Book On Whatsapp : {{CompanyProfile.WhatsappNo}} </p>
+                <p>Call Us : {{CompanyProfile.MobileNo}}</p>
+-->
+            </div>
+        </div>
+        <p class="mar-l1 mar-r1">Location : {{Shop.Address}}</p>
+
+        <div class="pad-2 center-text">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Minimum Order Cost</td>
+                        <td>Delivery Charges</td>
+                        <td>Opening Hours</td>
+                        <td>Delivery Time</td>
+                    </tr>
+                    <tr>
+                        <td>{{Shop.AverageCost}}</td>
+                        <td>{{Shop.DeliveryCharge}}</td>
+                        <td>{{Shop.OpeningHours}}</td>
+                        <td>{{Shop.DeliveryTime}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row sviewsec">
+            <div class="col">
+                <a><span ng-click="GetAllItems()">All </span> <span ng-click="GetShopItemsHavingOffer()"> | Offers</span> | Category <i class="icon ion-chevron-right"></i> </a>
+            </div>
+            <div class="col">
+                <select class="w-100" ng-options="ic.Id as ic.Name for ic in ItemCats" ng-model="filter.CategoryId" ng-change="GetShopCatItems()">
+                </select>
+            </div>
+        </div>
+
+        <div class="row mar-t1">
+            <div class="col">
+                <input class="form-control " placeholder="Search Item" ng-model="searchText" style="border-radius : 10px;">
+            </div>
+        </div>
+
+        <div ng-repeat="c in Items | orderBy:'Priority'">
+            <p ng-if="c.Items.length > 0" class="mar-l2"><b>{{c.Name}}</b></p>
+            <div class="card shopcardhome" ng-repeat="i in c.Items | orderBy:'InActive' | filter:searchText">
+                <div class="item item-text-wrap pad-0">
+                    <div class="row">
+                        <div class="col-25">
+                            <span class="octag" ng-if="i.InActive">Not Available</span>
+                            <img class="w-100" src="{{basePath}}{{i.Image}}">
+                        </div>
+                        <div class="col-75">
+                            <div class="pad-l5">
+                                <h2>{{i.Name}}</h2>
+                                <p style="color:darkgreen;" ng-if="i.Offer.Id <= 0">RS {{i.Price}} /-</p>
+                                <p ng-if="i.Offer.Id > 0" style="color:darkgreen;">RS <del style="color:red;">{{i.Price}}</del> {{i.OfferPrice}} /-</p>
+                            </div>
+                            <div class="pad-l5 mar-t2">
+                                <div class="btn-group">
+                                    <button class="pbtn1" ng-click="dcrQty(i)"> <i class="icon ion-minus"></i> </button>
+                                    <button> {{i.Quantity}} </button>
+                                    <button ng-click="incrQty(i)"> <i class="icon ion-plus"></i> </button>
+                                    <button class="pbtn2" ng-click="AddToCart(i)"> Add To Cart <i class="icon ion-ios-cart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="mar-t15 center-text" ng-if="Items.length <= 0">
+            <img src="images/empty.png" class="w-30">
+            <br>
+            <br>
+            <p>No Items Found !</p>
+        </div>
+
+        <br>
+        <div class="pad-l5 mar-t2 center-text">
+            <div class="btn-group">
+                <button class="pbtn1" ng-click="ViewVal = 0"> More Info </button>
+                <button ng-click="ViewVal = 1"> Menu</button>
+                <button ng-click="ViewVal = 2"> Images </button>
+                <button class="pbtn2" ng-click="ViewVal = 3"> Reviews </button>
+            </div>
+        </div>
+        <br>
+
+        <div class="padding">
+            <div ng-if="ViewVal == 0">
+                <h5>More Info</h5>
+                <hr>
+
+                <p><b>About</b></p>
+                <p>{{Shop.Description}}</p>
+                <br />
+                <p><b>Address</b></p>
+                <p>{{Shop.Address}}</p>
+                <br>
+                <div class="" ng-repeat="sf in Shop.ShopInfos">
+                    <p style="color:black"> <i class="icon ion-minus-circled"></i> {{sf.Description}}</p>
+                </div>
+            </div>
+
+            <div ng-if="ViewVal == 1">
+                <h5>Menu</h5>
+                <hr>
+                <div class="list card" ng-repeat="o in Shop.ShopMenus">
+
+                    <div class="item item-body pad-0">
+                        <img class="full-image" src="{{basePath}}{{o.Image}}">
+                    </div>
+
+                </div>
+            </div>
+
+            <div ng-if="ViewVal == 2">
+                <h5>Images</h5>
+                <hr>
+                <div class="list card" ng-repeat="o in Shop.ShopImages">
+
+                    <div class="item item-body pad-0">
+                        <img class="full-image" src="{{basePath}}{{o.Image}}">
+                    </div>
+
+                </div>
+            </div>
+
+            <div ng-if="ViewVal == 3">
+                <h5>Reviews</h5>
+                <hr>
+
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Name" ng-model="Review.Name">
+                    </label>
+                </div>
+
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Mobile No" ng-model="Review.MobileNo">
+                    </label>
+                </div>
+
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Email Id" ng-model="Review.EmailId">
+                    </label>
+                </div>
+
+                <jk-rating-stars rating="Review.Rating"></jk-rating-stars>
+
+                <br />
+
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <textarea type="text" rows="6" placeholder="Review" ng-model="Review.Description"></textarea>
+                    </label>
+                </div>
+
+                <br />
+                <div class="right-text">
+                    <button class="ratbutton" ng-click="AddReview()">Add Your Review</button>
+                </div>
+
+                <hr />
+
+                <div class="">
+                    <h4>Customer Reviews</h4>
+                    <br />
+                </div>
+
+                <div class="" ng-repeat="re in Reviews">
+                    <h3>{{re.Name}}</h3>
+                    <button class="ratbutton"> <i class="icon icon ion-star"></i> {{re.Rating}} / 5 </button>
+                    <p>{{re.Description}}</p>
+                    <hr />
+                </div>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

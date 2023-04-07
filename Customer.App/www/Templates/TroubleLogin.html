@@ -1,0 +1,81 @@
+<ion-view view-title="TroubleLogin" class="" cache-view="false">
+    <ion-content class="padding background" overflow-scroll="false">
+
+
+
+        <div>
+            <div ng-if="View == 0">
+                <label>Mobile No</label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="text" placeholder="EX : xxxxxxxxxx" ng-model="Register.MobileNo">
+                    </label>
+                </div>
+
+                <br>
+
+                <div class="padding">
+                    <button class="button button-block button-balanced" ng-click="SendOtp()">
+                        Send Otp
+                    </button>
+                </div>
+
+            </div>
+
+            <div ng-if="View == 1">
+                <label>Enter OTP</label>
+
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="number" placeholder="OTP No" ng-model="Register.OTP">
+                    </label>
+                </div>
+
+                <br>
+
+                <div class="padding">
+                    <button class="button button-block button-balanced" ng-click="SendOtp()">
+                        Resend OTP
+                    </button>
+                    <button class="button button-block button-balanced" ng-click="CheckOtp()">
+                        Continue
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div ng-if="View == 2">
+                <label>New Password</label>
+
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="password" ng-model="User.Password">
+                    </label>
+                </div>
+
+                <label>Confirm Password</label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="password" ng-model="User.CPassword">
+                    </label>
+                </div>
+
+                <br>
+
+                <div class="padding">
+                    <button class="button button-block button-balanced" ng-click="ResetTroublePswd()">
+                        Continue
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+<ion-view view-title="HF My Orders" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <div class="list  pad-2" style="background-color:#dfdfdf;">
+            <p>Date</p>
+            <input type="date" class="w-80" ng-model="data.Date">
+            <br>
+            <div class="right-text">
+                <button class="button" ng-click="getData()"> Get Details</button>
+            </div>
+        </div>
+
+        <div class="card shopcardhome" ng-repeat="o in Orders">
+            <div class="item item-text-wrap pad-1">
+                <p># : {{o.RefNo}}</p>
+                <p>Date : {{o.OrderDate | date: 'dd/MM/yyyy'}}</p>
+                <p>Time : {{o.Time}}</p>
+                <p>Total : {{o.Total}}</p>
+                <p>Status : {{o.StatusName}}</p>
+                <p>Customer : {{o.Name}}</p>
+                <p>Cus No : {{o.MobileNo}}</p>
+                <p>Location : {{o.Location.Name}}</p>
+                <p>Address : {{o.Address}}</p>
+            </div>
+        </div>
+
+        <div class="card" ng-if="Orders.length == 0">
+            <div class="item">
+                <p>No Data !!!</p>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

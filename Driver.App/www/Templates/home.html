@@ -1,0 +1,66 @@
+<ion-view view-title="Home" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <div class="text-center">
+            <img src="images/logo.png" class="w-50">
+        </div>
+        <br>
+        <div class="center-text">
+            <h3>Summary Of Today</h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col" ui-sref="Orders">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.TDelivered}}</h3>
+                    <p>Eahara Un Delivered</p>
+                </div>
+            </div>
+            <div class="col" ui-sref="Orders">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.TAssigned - DashBoardCounts.TDelivered}}</h3>
+                    <p>Eahara Delivered</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" ui-sref="Orders">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.TAssigned}}</h3>
+                    <p>Eahara Total</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" ui-sref="HFOrders">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{MEDDashBoardCounts.TDelivered}}</h3>
+                    <p>HF Un Delivered</p>
+                </div>
+            </div>
+            <div class="col" ui-sref="HFOrders">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{MEDDashBoardCounts.TAssigned - MEDDashBoardCounts.TDelivered}}</h3>
+                    <p>HF Delivered</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" ui-sref="HFOrders">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{MEDDashBoardCounts.TAssigned}}</h3>
+                    <p>HF Total</p>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

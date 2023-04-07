@@ -1,0 +1,25 @@
+<ion-view view-title="Select A Location" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background" overflow-scroll="false">
+
+
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" ng-model="search.Name" ng-change="updateList()" placeholder="Search">
+            </label>
+            <button class="button button-balanced clradj" ng-click="Clear()">
+                Clear
+            </button>
+        </div>
+
+        <div class="padding">
+            <ion-list>
+                <ion-radio style="border: 1px solid red;border-radius: 10px;" id="1" ng-repeat="c in Locations  | filter:search" ng-change="ChangeLocation(c)" ng-model="Filter.LocationId" ng-value="c.Id" name="Categories"> {{c.Name}} </ion-radio>
+            </ion-list>
+        </div>
+
+    </ion-content>
+</ion-view>

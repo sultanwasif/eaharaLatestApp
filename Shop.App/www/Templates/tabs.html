@@ -1,0 +1,70 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+    <ion-side-menu-content>
+
+        <ion-nav-bar class="bar-positive">
+
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button ng-if="IsLoggedIn" ui-sref="notifications" class="button button-icon button-clear ion-ios-bell">({{NotifiCount}})</button>
+            </ion-nav-buttons>
+
+        </ion-nav-bar>
+
+        <ion-nav-view name="menuContent"></ion-nav-view>
+
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" class="side-menucus ">
+        <ion-header-bar class="side-barcus sidehead ">
+            <h1 class="title title-cus sidehead">Welcome {{TokenInfo.UserName}}</h1>
+        </ion-header-bar>
+        <ion-content style="width:100vh;">
+            <ul class="list side-list ">
+                <li><a href="#/tab/home" class="item" menu-close><i class="icon ion-ios-home"></i> Home</a></li>
+
+                <li>
+                    <a ng-click="SetTenantMenu()" class="item">
+                        <span class="icon ion-flag"></span> Masters
+                        <span style="margin-left: 12vh;" ng-if="TenantMenu == 0" class="icon ion-chevron-down"></span>
+                        <span style="margin-left: 12vh;" ng-if="TenantMenu == 1" class="icon ion-chevron-up"></span>
+                    </a>
+                </li>
+
+                <li ng-if="TenantMenu == 1"><a href="" ng-click="goItemAdd()" class="item" menu-close>Add Item</a></li>
+
+                <li ng-if="TenantMenu == 1"><a href="" ng-click="goOfferAdd()" class="item" menu-close> Add Offer</a></li>
+
+                <li><a href="" class="item" menu-close ng-click="goSales()"><i class="icon ion-pie-graph"></i> My Sales</a></li>
+
+                <li><a href="#/tab/myItems" class="item" menu-close><i class="icon ion-cube"></i> My Items</a></li>
+
+                <li><a href="#/tab/myOffers" class="item" menu-close><i class="icon ion-pricetag"></i> My Offers</a></li>
+
+                <li><a href="#/tab/myProfile" class="item" menu-close><i class="icon ion-person"></i> My Profile</a></li>
+
+                <li>
+                    <a ng-click="SetReportMenu()" class="item">
+                        <span class="icon ion-document"></span> Reports
+                        <span style="margin-left: 12vh;" ng-if="ReportMenu == 0" class="icon ion-chevron-down"></span>
+                        <span style="margin-left: 12vh;" ng-if="ReportMenu == 1" class="icon ion-chevron-up"></span>
+                    </a>
+                </li>
+
+                <li ng-if="ReportMenu == 1"><a href="#/tab/paidBookings" class="item" menu-close> Paid Bookings</a></li>
+                <li ng-if="ReportMenu == 1"><a href="#/tab/unpaidBookings" class="item" menu-close> Un Paid Bookings</a></li>
+
+                <li><a href="#/tab/changepassword" class="item" menu-close><i class="icon ion-lock-combination"></i> Change Password</a></li>
+
+                <li><a href="" ng-click="logOut()" class="item" menu-close><i class="icon ion-log-out"></i> Log Out</a></li>
+
+            </ul>
+        </ion-content>
+    </ion-side-menu>
+
+</ion-side-menus>

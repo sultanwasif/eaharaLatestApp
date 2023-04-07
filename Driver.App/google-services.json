@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "651533459515",
+    "firebase_url": "https://eahara-restaurant.firebaseio.com",
+    "project_id": "eahara-restaurant",
+    "storage_bucket": "eahara-restaurant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651533459515:android:cd3eeffa6660c710",
+        "android_client_info": {
+          "package_name": "com.adeal.eahararestaurantapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651533459515-9mcp2ac14hdm2pvcqfhcvs0k2f7ftvu1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPEdRp-d0jrOoc_cXculL2-nVl8vaZLWg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

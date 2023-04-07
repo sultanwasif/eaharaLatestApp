@@ -1,0 +1,60 @@
+<ion-view view-title="Near By Restaurants" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background padding" overflow-scroll="false">
+
+
+        <div class="card text-center">
+            <p class='mar-0' ng-if="LocationSelected" ui-sref="locations">Delivering Near to {{LocInfo.Name}} <a> Change</a></p>
+            <p class='mar-0' ng-if="!LocationSelected" ui-sref="locations">Select Nearby Location Point </p>
+        </div>
+
+
+        <div>
+            <div class="item item-input controls">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input id="booking-sell-delivery-input" type="text" placeholder="Search Location" data-tap-disabled="true" ng-change='disableTap()' ng-model="search">
+            </div>
+            <div id="booking-sell-delivery-map" data-tap-disabled="true"></div>
+        </div>
+        <br>
+
+        <div class="card shopcardhome" ng-repeat="s in NearShops | orderBy:'Order'" ng-click="goToShopDetails(s.Id)">
+            <div class="item item-text-wrap pad-0">
+                <div class="row">
+                    <div class="col-25">
+
+                        <img class="w-100" src="{{basePath}}{{s.Image}}">
+                        <span style="color:red;" ng-if="s.StartTime > CurrentTime || s.EndTime < CurrentTime">Closed</span>
+                        <span style="color:green;" ng-if="s.StartTime < CurrentTime && s.EndTime > CurrentTime">Open Now</span>
+                    </div>
+                    <div class="col-75">
+                        <div class="row">
+                            <div class="col">
+                                <h2>{{s.Name}}</h2>
+                            </div>
+                            <div class="col right-text">
+                                <p style="color:green;"> <i class="icon icon ion-star"></i> {{s.AverageRating}} / 5 </p>
+                            </div>
+                        </div>
+                        <div class="pad-l5">
+                            <p>{{s.TagLine}}</p>
+                            <p>Min Order : {{s.AverageCost}} RS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mar-t15 center-text" ng-if="NearShops.length <= 0">
+            <img src="images/empty.png" class="w-30">
+            <br>
+            <br>
+            <p>No Items Found ! </p>
+        </div>
+
+
+    </ion-content>
+</ion-view>

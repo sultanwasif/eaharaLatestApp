@@ -1,0 +1,11 @@
+{
+    "android": {
+        "release": {
+            "keystore": "keystore/eahara-driver-key.keystore",
+            "storePassword": "adeal@123",
+            "alias": "anoopnockson",
+            "password": "adeal@123",
+            "keystoreType": ""
+        }
+    }
+}

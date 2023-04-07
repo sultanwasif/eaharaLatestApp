@@ -1,0 +1,98 @@
+<ion-view view-title="My Sales" class="" cache-view="false">
+    <ion-content class="background" overflow-scroll="false">
+
+        <div class="list  pad-2" style="background-color:#dfdfdf;">
+            <p>Select Status</p>
+            <div class="item item-input-inset">
+                <select class="w-100" ng-model="Filter.StatusId" ng-options="s.Id as s.Name for s in Status" ng-change="ChangeStatus()"></select>
+            </div>
+
+        </div>
+
+        <div class="card shopcardhome padding" ng-repeat="b in Sales">
+            <div class="item item-text-wrap pad-0 ">
+
+                <div class="row">
+                    <div class="col">
+                        <p style="color:red;"><b># : {{$index+1}} ) {{b.RefNo}}</b></p>
+                    </div>
+                    <div class="col right-text">
+                        <a style="color: dodgerblue;" ng-click="ShareLocation(b)">Share Location</a>
+                    </div>
+                </div>
+
+                <!--
+                <p>Customer : {{b.Name}}</p>
+<p>Mobile No : {{b.MobileNo}}</p>
+-->
+                <p>Delivery Date : {{b.OrderDate | date : 'dd/MM/yyyy @ h:mma'}}, {{b.Time}}</p>
+                <p>Address : {{b.Address}}</p>
+                <p>Paid Status : <span ng-if="b.IsPaid == true"> Paid</span> <span ng-if="b.IsPaid == false"> Not Paid</span></p>
+                <p>Remarks : {{b.Description}}</p>
+                <!--
+                <table>
+                    <tr>
+                        <th class="thcus">Order Total</th>
+                        <th class="thcus">Del Charge</th>
+                        <th class="thcus">Eahara Disc</th>
+                        <th class="thcus">Amount To Be Paid</th>
+                    </tr>
+                    <tr>
+                        <td>{{b.SubTotal + b.PromoOfferPrice}}</td>
+                        <td>{{b.TotalDeliveryCharge}}</td>
+                        <td>{{b.PromoOfferPrice}} {{b.PromoOffer.Tittle}}</td>
+                        <td>{{b.Total}}</td>
+                    </tr>
+                </table>
+-->
+                <table>
+                    <tr>
+                        <th class="thcus">My Price</th>
+                        <th class="thcus">Commission</th>
+                        <th class="thcus">Balance</th>
+                    </tr>
+                    <tr>
+                        <td>{{b.ActualTotal}}</td>
+                        <td>{{b.Commission}}</td>
+                        <td>{{b.ActualTotal - b.Commission}}</td>
+                    </tr>
+                </table>
+                <br>
+                <p>Reason</p>
+                <input style="border:1px solid lightgrey;" class="w-100" ng-disabled="b.Status.Name =='Delivered' || b.Status.Name =='Cancel'" type="text" ng-model="b.CancelRemarks">
+                <br>
+                <p>Status</p>
+                <select style="background-color: #e1e1e1;" class="w-100" ng-model="b.StatusId" ng-options="s.Id as s.Name for s in Status"></select>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <a ng-if="!b.IsView" ng-click="viewDetail(b)">View Details</a>
+                        <a ng-if="b.IsView" ng-click="viewDetail(b)">Hide Details</a>
+                    </div>
+                    <div style="text-align:right;">
+                        <button class="btn" style="color:red;" ng-click="SaveStatus(b)">Save Status</button>
+                    </div>
+                </div>
+                <div ng-if="b.IsView">
+                    <table>
+                        <tr>
+                            <th class="thcus">Item</th>
+                            <th class="thcus">Price</th>
+                            <th class="thcus">Quantity</th>
+                            <th class="thcus">Disc Price</th>
+                            <th class="thcus">Total</th>
+                        </tr>
+                        <tr ng-repeat="d in b.BookingDetails">
+                            <td>{{d.Item.Name}}</td>
+                            <td>{{d.Price}}</td>
+                            <td>{{d.Quantity}}</td>
+                            <td>{{d.DiscountPrice}}</td>
+                            <td>{{d.TotalPrice}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,113 @@
+<ion-view view-title="Restaurants" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background" overflow-scroll="false">
+
+        <div class="card text-center">
+            <p class='mar-0' ng-if="LocationSelected" ui-sref="locations">Delivering Near to {{LocInfo.Name}} <a> Change</a></p>
+            <p class='mar-0' ng-if="!LocationSelected" ui-sref="locations">Select Nearby Location Point </p>
+        </div>
+
+
+        <div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <h3 class="mar-0">Collections</h3>
+                </div>
+                <div class="col right-text pad-r5 explore">
+                    <a ng-click="ShowFilter()">Filter</a>
+                </div>
+            </div>
+
+            <div ng-if="FilterView == false">
+                <div class="card shopcardhome" ng-repeat="s in Shops | orderBy:'Order'" ng-click="goToShopDetails(s.Id)">
+                    <div class="item item-text-wrap pad-0">
+                        <div class="row">
+                            <div class="col-25">
+
+                                <img class="w-100" src="{{basePath}}{{s.Image}}">
+                                <span style="color:red;" ng-if="s.StartTime > CurrentTime || s.EndTime < CurrentTime">Closed</span>
+                                <span style="color:green;" ng-if="s.StartTime < CurrentTime && s.EndTime > CurrentTime">Open Now</span>
+                            </div>
+                            <div class="col-75">
+                                <div class="row">
+                                    <div class="col">
+                                        <h2>{{s.Name}}</h2>
+                                    </div>
+                                    <div class="col right-text">
+                                        <p style="color:green;"> <i class="icon icon ion-star"></i> {{s.AverageRating}} / 5 </p>
+                                    </div>
+                                </div>
+                                <div class="pad-l5">
+                                    <p>{{s.TagLine}}</p>
+                                    <p>Min Order : {{s.AverageCost}} RS</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="padding  right-text" ng-if="Shops.length > 0">
+                    <a ng-click="LoadMore()" style="color: #f10d1b;"><b>Load More</b></a>
+                </div>
+
+                <div class="mar-t15 center-text" ng-if="Shops.length <= 0">
+                    <img src="images/empty.png" class="w-30">
+                    <br>
+                    <br>
+                    <p>No Items Found ! </p>
+                </div>
+
+            </div>
+
+
+            <div class="" ng-if="FilterView == true">
+
+                <div class="padding">
+
+                    <div class="bar bar-header item-input-inset">
+                        <label class="item-input-wrapper">
+                            <i class="icon ion-ios-search placeholder-icon"></i>
+                            <input type="search" ng-model="Filter.Keyword" placeholder="Search for...">
+                        </label>
+                        <button class="button button-balanced clradj" ng-click="ApplyFilter()">
+                            Go
+                        </button>
+                    </div>
+
+                    <div class="left-side">
+                        <h4>Food Preference</h4>
+
+                        <ion-list>
+                            <ion-checkbox ng-model="Filter.Preference" ng-change="ApplyFilter()">Vegetarian</ion-checkbox>
+                            <ion-checkbox ng-model="Filter.Preference2" ng-change="ApplyFilter()">Non-Vegetarian</ion-checkbox>
+                        </ion-list>
+
+                    </div>
+
+                    <div>
+                        <h4>Shops</h4>
+                        <ion-list>
+                            <ion-checkbox ng-repeat="sc in ShopsCategories" ng-model="sc.IsChecked" ng-change="ApplyFilter2()">{{sc.Name}}</ion-checkbox>
+                        </ion-list>
+                    </div>
+
+
+                    <div>
+                        <h4>Items</h4>
+                        <ion-list>
+                            <ion-checkbox ng-repeat="c in Categories" ng-model="c.IsChecked" ng-change="ApplyFilter3()">{{c.Name}}</ion-checkbox>
+                        </ion-list>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,55 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-ios-cart" ui-sref="cart" value="">({{CartLength}})</button>
+                <button ui-sref="search" class="button button-icon button-clear ion-android-search"></button>
+                <button ng-if="IsLoggedIn" ui-sref="notifications" class="button button-icon button-clear ion-ios-bell">({{NotifiCount}})</button>
+            </ion-nav-buttons>
+
+        </ion-nav-bar>
+
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" class="side-menucus">
+        <ion-header-bar class="side-barcus">
+            <h1 class="title title-cus">E-Ahara</h1>
+        </ion-header-bar>
+        <ion-content style="width:100vh;">
+
+            <ul class="list side-list">
+                <li><a href="#/tab/home" class="item" menu-close><span class="icon ion-ios-home" ></span> Home</a></li>
+
+                <li><a href="#/tab/restaurants" class="item" menu-close><span class="icon ion-fork"></span> Restaurants</a></li>
+
+                <li><a href="#/tab/items" class="item" menu-close><span class="icon ion-icecream"></span> Items</a></li>
+
+                <li><a href="#/tab/offers" class="item" menu-close><span class="icon ion-bookmark"></span> Offers</a></li>
+
+                <li><a href="#/tab/track" class="item" menu-close><span class="icon ion-location"></span> Track</a></li>
+
+                <li ng-if="IsLoggedIn == true"><a href="#/tab/history" class="item" menu-close><span class="icon ion-clock"></span> My Orders</a></li>
+
+                <li ng-if="IsLoggedIn == false">
+                    <a href="#/tab/login" class="item" menu-close><span class="icon ion-log-in"></span> Login</a></li>
+
+                <li ng-if="IsLoggedIn == false"><a href="#/tab/register" class="item" menu-close><span class="icon ion-plus-circled"></span> Register</a></li>
+
+                <li><a href="#/tab/enquiry" class="item" menu-close><span class="icon ion-email"></span> Enquiry</a></li>
+
+                <li ng-if="IsLoggedIn == true"><a href="#/tab/userSettings" class="item" menu-close><span class="icon ion-person" ></span> Profile</a></li>
+
+
+            </ul>
+        </ion-content>
+    </ion-side-menu>
+
+</ion-side-menus>

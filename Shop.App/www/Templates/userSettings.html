@@ -1,0 +1,46 @@
+<ion-view view-title="{{ProfileLan}}" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background" overflow-scroll="false">
+
+
+        <div>
+            <div class="list set-list">
+
+                <a class="item item-icon-left">
+                    <i class="icon ion-person"></i> {{Profile.Name}} {{Profile.MobileNo}}
+                </a>
+
+
+                <a class="item item-icon-left">
+                    <i class="icon ion-heart"></i>My Points : {{Profile.Points}}
+                </a>
+
+                <a class="item item-icon-left" ng-click="Copy()">
+                    <i class="icon ion-star"></i> Your Code : {{Profile.RefNo}}
+                    <br> Share This Code And Get Bonus Click To Copy
+                </a>
+
+
+                <a class="item item-icon-left" ui-sref="history">
+                    <i class="icon ion-clock"></i> My Orders
+                </a>
+
+                <a class="item item-icon-left" ng-click="ReferAFriend()">
+                    <i class="icon ion-thumbsup"></i> Refer a Friend &amp; Get More Points
+                </a>
+                <a class="item item-icon-left" ui-sref="changePassword">
+                    <i class="icon ion-locked"></i> Change Password
+                </a>
+
+                <a class="item item-icon-left" ng-click="logOut()">
+                    <i class="icon ion-log-out"></i> Logout
+                </a>
+
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

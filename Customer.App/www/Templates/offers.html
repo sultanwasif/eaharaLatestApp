@@ -1,0 +1,25 @@
+<ion-view view-title="Today's Offer" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background" overflow-scroll="false">
+
+        <div class="card text-center">
+            <p class='mar-0' ng-if="LocationSelected" ui-sref="locations">Delivering Near to {{LocInfo.Name}} <a> Change</a></p>
+            <p class='mar-0' ng-if="!LocationSelected" ui-sref="locations">Select Nearby Location Point </p>
+        </div>
+
+
+        <div>
+            <div class="list card" ng-repeat="o in Offers" ng-click="GoOfferItems(o.Id)">
+
+                <div class="item item-body pad-0">
+                    <img class="full-image" src="{{basePath}}{{o.Image}}">
+                </div>
+
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

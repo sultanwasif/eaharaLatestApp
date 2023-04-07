@@ -1,0 +1,56 @@
+<ion-view view-title="Track Booking" class="" cache-view="false">
+    <ion-content class="padding background" overflow-scroll="false">
+
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" ng-model="Filter.OrderNo" placeholder="Booking No">
+            </label>
+            <button class="button button-balanced clradj" ng-click="TrackNow()">
+                Track
+            </button>
+        </div>
+
+        <div class="card shopcardhome padding" ng-if="Results != null">
+            <div class="item item-text-wrap pad-0 ">
+                <h2>{{Results.RefNo}}</h2>
+                <h2>{{Results.StatusName}}</h2>
+                <p>Shop : {{Results.Shop.Name}}</p>
+                <p>Sub Total : {{Results.SubTotal}} RS</p>
+                <p>Total Delivery Charge : {{Results.TotalDeliveryCharge}} RS</p>
+                <p>Offer Price : {{Results.PromoOfferPrice}} RS</p>
+                <p>Total : {{Results.Total}} RS</p>
+                <br>
+                <p><b>Items</b></p>
+                <hr>
+                <table class="table table-bordered w-100">
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Disc Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr ng-repeat="b in Results.BookingDetails">
+                        <td>{{b.Item.Name}}</td>
+                        <td>{{b.Price}}</td>
+                        <td>{{b.DiscountPrice}}</td>
+                        <td>{{b.Quantity}}</td>
+                        <td>{{b.TotalPrice}}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+
+        <div class="mar-t15 center-text" ng-if="Results == null">
+            <img src=" images/empty.png " class="w-30 ">
+            <br>
+            <br>
+            <p>No Data Found ! </p>
+        </div>
+
+
+    </ion-content>
+</ion-view>

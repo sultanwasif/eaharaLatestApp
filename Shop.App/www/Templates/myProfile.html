@@ -1,0 +1,108 @@
+<ion-view view-title="My Profile" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <p>Mobile No</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Shop.MobileNo">
+            </label>
+        </div>
+
+        <p>Address</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Shop.Address">
+            </label>
+        </div>
+
+        <p>Delivery Time </p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Shop.DeliveryTime">
+            </label>
+        </div>
+
+        <p>Minimum Order Cost </p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="number" placeholder="" ng-model="Shop.AverageCost">
+            </label>
+        </div>
+
+        <p>Food Preference </p>
+        <div class="list list-inset">
+            <ion-list>
+                <ion-radio ng-model="Shop.Preference" ng-value="'Veg & Non Veg'">Veg & Non Veg</ion-radio>
+                <ion-radio ng-model="Shop.Preference" ng-value="'Non-Vegetarian'">Non-Vegetarian</ion-radio>
+                <ion-radio ng-model="Shop.Preference" ng-value="'Vegetarian'">Vegetarian</ion-radio>
+            </ion-list>
+        </div>
+
+        <p>Start Time </p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="number" placeholder="" ng-model="Shop.StartTime">
+            </label>
+        </div>
+
+        <p>End Time</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="number" placeholder="" ng-model="Shop.EndTime">
+            </label>
+        </div>
+
+
+        <p>Opeinig Hours</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Shop.OpeningHours">
+            </label>
+        </div>
+
+        <p>Cuisines</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Shop.Cuisines">
+            </label>
+        </div>
+
+        <p>Tag Line</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Shop.TagLine">
+            </label>
+        </div>
+
+        <p>Description</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <textarea rows="5" placeholder="" ng-model="Shop.Description"> </textarea>
+            </label>
+        </div>
+
+        <p>Delivery Charge</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="number" placeholder="" ng-model="Shop.DeliveryCharge">
+            </label>
+        </div>
+
+        <p>Delivery Range</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="number" placeholder="" ng-model="Shop.DeliveryRange">
+            </label>
+        </div>
+
+        <button class="button button-block button-assertive" ng-click="SaveItem()" style="color: black">
+            Save Profile
+        </button>
+
+
+    </ion-content>
+</ion-view>

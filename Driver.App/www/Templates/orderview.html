@@ -1,0 +1,65 @@
+<ion-view view-title="Order View" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <div class="card shopcardhome">
+            <div class="item item-text-wrap pad-1">
+                <p># : {{Order.RefNo}}</p>
+                <p>Date : {{Order.OrderDate | date: 'dd/MM/yyyy'}}</p>
+                <p>Time : {{Order.Time}}</p>
+                <p>Total : {{Order.Total}}</p>
+                <p>Status : {{Order.StatusName}}</p>
+                <p>Shop : {{Order.Shop.Name}}</p>
+                <p>Customer : {{Order.Name}}</p>
+                <p>Cus No : {{Order.MobileNo}}</p>
+                <p>Location : {{Order.Location.Name}}</p>
+                <p>Address : {{Order.Address}}</p>
+                <p>Remarks : {{Order.Remarks}}</p>
+
+                <table>
+                    <tr>
+                        <th class="thcus">Item</th>
+                        <th class="thcus">Price</th>
+                        <th class="thcus">Quantity</th>
+                        <th class="thcus">Disc Price</th>
+                        <th class="thcus">Total</th>
+                    </tr>
+                    <tr ng-repeat="d in Order.BookingDetails">
+                        <td>{{d.Item.Name}}</td>
+                        <td>{{d.Price}}</td>
+                        <td>{{d.Quantity}}</td>
+                        <td>{{d.DiscountPrice}}</td>
+                        <td>{{d.TotalPrice}}</td>
+                    </tr>
+                </table>
+
+                <br>
+                <br>
+
+                <br />
+                <div class="text-center">
+                    <a href="http://maps.google.com/maps?&z=7&q={{Order.Lat}}+{{Order.Lng}}&ll={{Order.Lat}}+{{Order.Lng}}" target="_blank" style="color: dodgerblue;">Click Here to View Delivery Location</a></div>
+                <br />
+
+
+                <div class="row">
+                    <div class="col">
+                        <a class="btn" href="tel:{{Order.MobileNo}}" ng-click="SaveStatus(b)">Call Customer</a>
+                    </div>
+                    <div class="col">
+                        <button class="btn" style="color:red;" ng-click="MarkPicked()">Save As Picked</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn" style="color:red;" ng-click="MarkDelivered()">Save As Delivered</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

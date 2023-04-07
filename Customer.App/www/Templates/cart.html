@@ -1,0 +1,71 @@
+<ion-view view-title="My Cart" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background" overflow-scroll="false">
+
+        <div ng-if="ordersToCheckout.length >0">
+
+            <div class="">
+                <div class="list card" ng-repeat="c in ordersToCheckout  track by $index">
+
+                    <div class="item item-avatar">
+                        <img src="{{basePath}}{{c.Image}}">
+                        <h2>{{c.Name}}</h2>
+                        <h2>Price : {{c.Price}} RS</h2>
+                        <h2>Discount Price : {{c.DiscountPrice}} RS</h2>
+                        <h2>Quantity : {{c.Quantity}} </h2>
+                        <!--                      <h2>Delivery Charge : {{c.DelCharge}}  </h2>-->
+                        <h2>Total : {{(c.DiscountPrice * c.Quantity)}} RS</h2>
+
+                        <div class="row">
+                            <div class="col">
+                                <a style="color: red" ng-click="removeCart(c)">Remove </a>
+                            </div>
+                            <div class="col  right-text">
+                                <div class="btn-group2">
+                                    <button class="pbtn1" ng-click="dcrQty(c)"> <i class="icon ion-minus"></i> </button>
+                                    <button> {{c.Quantity}} </button>
+                                    <button class="pbtn2" ng-click="incrQty(c)"> <i class="icon ion-plus"></i> </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mar-t15 center-text" ng-if="ordersToCheckout.length <= 0">
+            <img src="images/cart.png" class="w-30">
+            <br>
+            <br>
+            <p>Oops Cart Empty</p>
+        </div>
+
+        <div ng-if="ViewCheckoutPage == 1">
+            <div class="center-text" ng-if="Total >  0">
+                <p>From {{ordersToCheckout[0].Shop}} </p>
+                <p>Order Total : {{SubTotal}} Rs. </p>
+                <p>Delivery Charge : {{TotalDeliveryCharge}} Rs.</p>
+                <p>Amount To Be Paid : {{Total}} Rs.</p>
+            </div>
+            <div class="padding" ng-if="Total >  0">
+                <button class="button button-block button-balanced" ui-sref="checkout"> Proceed To Check Out {{Total}} RS </button>
+            </div>
+        </div>
+
+        <div ng-show="ViewCheckoutPage == 0" class="padding">
+            <h4 style="color:red;">Sub total less than minimum order cost. Please add more items.</h4>
+            <p>Sub total : {{SubTotal}} Rs.</p>
+            <p>Minimum order cost for {{Shop.Name}} : {{Shop.AverageCost}} Rs.</p>
+            <br />
+            <button class="button button-block button-balanced" ui-sref="home"> Continue Shopping</button>
+        </div>
+
+
+    </ion-content>
+</ion-view>

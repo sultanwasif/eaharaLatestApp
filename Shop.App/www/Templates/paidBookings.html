@@ -1,0 +1,72 @@
+<ion-view view-title="Paid Bookings" class="" cache-view="false">
+    <ion-content class="background" overflow-scroll="false">
+
+        <div class="list  pad-2" style="background-color:#dfdfdf;">
+            <p>From Date</p>
+            <input type="date" class="w-100" ng-model="filter.FromDate">
+            <br>
+            <p>To Date</p>
+            <input type="date" class="w-100" ng-model="filter.ToDate">
+            <br>
+            <div class="right-text">
+                <button class="button" ng-click="GetReport()"> Get Report</button>
+            </div>
+        </div>
+
+        <div class="card shopcardhome padding" ng-repeat="b in Bookings">
+            <div class="item item-text-wrap pad-0 ">
+
+                <p style="color:red;"><b># : {{$index+1}} ) {{b.RefNo}}</b></p>
+                <p>Delivery Date : {{b.OrderDate | date : 'dd/MM/yyyy @ h:mma'}}, {{b.Time}}</p>
+                <p>Address : {{b.Address}}</p>
+                <p>Paid Status : <span ng-if="b.IsPaid == true"> Paid</span> <span ng-if="b.IsPaid == false"> Not Paid</span></p>
+                <p>Description : {{b.Description}}</p>
+
+                <table>
+                    <tr>
+                        <th class="thcus">My Price</th>
+                        <th class="thcus">Commission</th>
+                        <th class="thcus">Balance</th>
+                    </tr>
+                    <tr>
+                        <td>{{b.ActualTotal}}</td>
+                        <td>{{b.Commission}}</td>
+                        <td>{{b.ActualTotal - b.Commission}}</td>
+                    </tr>
+                </table>
+                <br>
+                <p>Status : {{b.Status.Name}}</p>
+                <p>Remarks : {{b.Remarks}}</p>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <a ng-if="!b.IsView" ng-click="viewDetail(b)">View Details</a>
+                        <a ng-if="b.IsView" ng-click="viewDetail(b)">Hide Details</a>
+                    </div>
+                    <div style="text-align:right;">
+                        <button class="btn" style="color:red;" ng-click="SaveStatus(b)">Save Status</button>
+                    </div>
+                </div>
+                <div ng-if="b.IsView">
+                    <table>
+                        <tr>
+                            <th class="thcus">Item</th>
+                            <th class="thcus">Price</th>
+                            <th class="thcus">Quantity</th>
+                            <th class="thcus">Disc Price</th>
+                            <th class="thcus">Total</th>
+                        </tr>
+                        <tr ng-repeat="d in b.BookingDetails">
+                            <td>{{d.Item.Name}}</td>
+                            <td>{{d.Price}}</td>
+                            <td>{{d.Quantity}}</td>
+                            <td>{{d.DiscountPrice}}</td>
+                            <td>{{d.TotalPrice}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

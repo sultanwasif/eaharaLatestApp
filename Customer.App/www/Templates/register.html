@@ -1,0 +1,138 @@
+<ion-view view-title=" Register " class="" cache-view="false">
+    <ion-content class="background padding" overflow-scroll="false">
+
+        <div>
+            <div ng-if="View == 0">
+                <label>Mobile No</label>
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <input type="text" placeholder="EX : xxxxxxxxxx" ng-model="Register.MobileNo">
+                    </label>
+                </div>
+
+                <br>
+
+                <div class="padding">
+                    <button class="button button-block button-balanced" ng-click="SendOtp()">
+                        Send Otp
+                    </button>
+                </div>
+
+            </div>
+
+            <div ng-if="View == 1">
+                <label>Enter OTP</label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="number" placeholder="OTP No" ng-model="Register.Otp">
+                    </label>
+                </div>
+
+                <br>
+
+                <div class="padding">
+                    <button class="button button-block button-balanced" ng-click="SendOtp()">
+                        Resend OTP
+                    </button>
+                    <button class="button button-block button-balanced" ng-click="CheckOtp()">
+                        Continue
+                    </button>
+                </div>
+            </div>
+
+            <div ng-if="View == 2">
+                <label>Name</label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="text" placeholder="Name" ng-model="Register.Name">
+                    </label>
+                </div>
+                <!--
+
+                <label>Email</label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="text" placeholder="Email" ng-model="Register.Email">
+                    </label>
+                </div>
+
+                <label>Telephone No</label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="text" placeholder="Telephone No" ng-model="Register.TelephoneNo">
+                    </label>
+                </div>
+-->
+
+
+
+                <label>Address</label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <textarea placeholder="Address" rows="5" ng-model="Register.Address"></textarea>
+                    </label>
+                </div>
+
+                <label>Refer Code</label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="text" placeholder="Refer Code" ng-model="Register.InstRefNo">
+                    </label>
+                </div>
+
+
+
+                <label>Password <span style="color:red"> *</span></label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="password" placeholder="Password" ng-model="User.Password">
+                    </label>
+                </div>
+
+
+                <label>Confirm Password <span style="color:red"> *</span></label>
+                <div class="list list-inset">
+
+                    <label class="item item-input">
+                        <input type="password" placeholder="Confirm Password" ng-model="User.CPassword">
+                    </label>
+                </div>
+
+
+                <label> How do you know about us? <span style="color:red"> *</span></label>
+                <ion-list>
+                    <ion-checkbox ng-repeat="m in Methods" ng-model="m.IsChecked"> {{m.Name}}</ion-checkbox>
+                </ion-list>
+
+                <br>
+
+                <div class="text-center">
+                    <a style="text-decoration:none; cursor:pointer;" ui-sref="Terms" target="_blank">I Agree With the terms And conditions <span style="color:red"> *</span></a>
+                    <input type="checkbox" ng-model="Register.IsCheckedTerms">
+                </div>
+
+                <div class="padding">
+                    <button class="button button-block button-balanced" ng-click="RegisterNow()">
+                        Register Now
+                    </button>
+                    <button class="button button-block button-balanced" ng-click="init()">
+                        Reset
+                    </button>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

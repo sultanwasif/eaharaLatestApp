@@ -1,0 +1,35 @@
+<ion-view view-title=" {{EnquiryLan}}" class="" cache-view="false">
+    <ion-content class="padding background" overflow-scroll="false">
+
+        <div>
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Name" ng-model="Enquiry.Name">
+                </label>
+            </div>
+
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Phone No" ng-model="Enquiry.MobileNo">
+                </label>
+            </div>
+
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Email" ng-model="Enquiry.Email">
+                </label>
+            </div>
+
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <textarea type="text" rows="6" placeholder="Message" ng-model="Enquiry.Remarks"></textarea>
+                </label>
+            </div>
+
+            <button class="button button-block button-balanced" ng-click="EnquireNow()">
+                Enquire Now
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>

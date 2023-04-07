@@ -1,0 +1,44 @@
+<ion-view view-title="My Items" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <div class="card shopcardhome" ng-repeat="i in Items">
+            <div class="item item-text-wrap pad-0">
+                <div class="row">
+                    <div class="col-25">
+                        <img class="w-100" style="height: 10vh; border-radius: 10px;" src="{{basePath}}{{i.Image}}">
+                    </div>
+                    <div class="col-75">
+                        <div class="pad-l5">
+                            <h2 class="">{{i.Name}} </h2>
+                            <p>{{i.TagLine}} </p>
+                            <p>Offer : {{i.Offer.Tittle}} </p>
+                            <p style="color:darkgreen;">RS {{i.Price}} /-</p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row center-text">
+                    <div class="col">
+                        <a ng-click="Delete(i.Id)">Delete</a>
+                    </div>
+                    <div class="col">
+                        <a ng-if="!i.InActive" ng-click="makeItemInactive(i.Id)">Make Inactive</a>
+                        <a ng-if="i.InActive" ng-click="makeItemInactive(i.Id)">Make Active</a>
+                    </div>
+                    <div class="col" ng-if="i.OfferId > 0">
+                        <a ng-click="RemoveItemoffer(i.Id)">Remove Offer</a>
+                    </div>
+                    <div class="col">
+                        <a ng-click="edit(i.Id)">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

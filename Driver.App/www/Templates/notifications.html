@@ -1,0 +1,18 @@
+<ion-view view-title="Notifications" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background" overflow-scroll="false">
+
+
+
+        <div class="card shopcardhome" ng-repeat="n in Notifications">
+            <div class="item item-text-wrap pad-1">
+                <p> {{n.Description}} </p>
+            </div>
+        </div>
+
+
+
+    </ion-content>
+</ion-view>

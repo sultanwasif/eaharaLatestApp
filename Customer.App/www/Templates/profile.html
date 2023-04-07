@@ -1,0 +1,129 @@
+<ion-view view-title="My Orders" class="" cache-view="false">
+    <ion-content class="background padding" overflow-scroll="false">
+
+        <h2> My Profile</h2>
+        <div class="card shopcardhome padding">
+            <div class="item item-text-wrap pad-0 ">
+                <table class="table table-bordered w-100">
+                    <tr>
+                        <th>Name</th>
+                        <td>{{Profile.Name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Mobile No</th>
+                        <td>{{Profile.MobileNo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email Id</th>
+                        <td>{{Profile.Email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Telephone No</th>
+                        <td>{{Profile.TelephoneNo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Reference No </th>
+                        <td>{{Profile.RefNo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Points </th>
+                        <td>{{Profile.Points}}</td>
+                    </tr>
+
+                </table>
+                <br>
+                <div class="right-text">
+                    <a ng-click="updateClick()">Update Profile</a>
+                </div>
+                <br>
+
+                <div ng-show="IsUpdate==true">
+                    <table class="table table-bordered w-100">
+                        <tr>
+                            <th>Name</th>
+                            <td>
+                                <input ng-model="Profile.Name" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email Id</th>
+                            <td>
+                                <input ng-model="Profile.Email" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Telephone No</th>
+                            <td>
+                                <input ng-model="Profile.TelephoneNo" class="form-control" />
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="text-right mar-t2">
+                        <a class="" ng-click="SaveProfile()">Save Profile</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <h2> My Address</h2>
+
+        <div class="row">
+            <div class="col">
+                <p>Save Address</p>
+            </div>
+            <div class="col text-right">
+                <a ng-click="AddupdateClick()">View / hide Address</a>
+            </div>
+        </div>
+        <div ng-show="IsAddUpdate == false">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Title" ng-model="CurAddress.Title">
+                </label>
+            </div>
+
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Location" ng-model="CurAddress.Location">
+                </label>
+            </div>
+
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <textarea type="text" rows="6" placeholder="Address" ng-model="CurAddress.Description"></textarea>
+                </label>
+            </div>
+
+            <div>
+                <div class="item item-input controls">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input id="booking-sell-delivery-input" type="text" placeholder="Search Location" data-tap-disabled="true" ng-change='disableTap()' ng-model="search">
+                </div>
+                <div id="booking-sell-delivery-map" data-tap-disabled="true"></div>
+            </div>
+            <br>
+
+
+            <button class="button button-block button-balanced" ng-click="saveAddress()">
+                Save Now
+            </button>
+        </div>
+
+        <div ng-show="IsAddUpdate == true">
+
+            <div class="card shopcardhome padding" ng-repeat="a in Address" ng-click="UpdateAddress(a)">
+                <div class="item item-text-wrap pad-0 ">
+
+                    <p>{{a.Title}}</p>
+                    <p>{{a.Description}}</p>
+                    <p>{{a.Location}}</p>
+                    <p>Click to update address</p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </ion-content>
+</ion-view>

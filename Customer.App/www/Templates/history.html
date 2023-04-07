@@ -1,0 +1,57 @@
+<ion-view view-title="My Orders" class="" cache-view="false">
+    <ion-content class="background padding" overflow-scroll="false">
+
+        <div class="card shopcardhome padding" ng-repeat="s in Orders">
+            <div class="item item-text-wrap pad-0 ">
+                <h2>{{s.RefNo}}</h2>
+                <h2>{{s.StatusName}}</h2>
+                <p>{{s.OrderDate | date:'dd/MM/yyyy'}}</p>
+                <p>Shop : {{s.Shop.Name}}</p>
+                <p>Order Total : {{s.SubTotal + s.PromoOfferPrice}} RS</p>
+                <p>Delivery Charge : {{s.TotalDeliveryCharge}} RS</p>
+                <p>Eahara Discount : {{s.PromoOfferPrice}} RS {{s.PromoOffer.Tittle}} </p>
+                <p>Amount To Be Paid : {{s.Total}} RS</p>
+                <br>
+                <p><b>Items</b></p>
+                <hr>
+                <table class="table table-bordered w-100">
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Disc Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr ng-repeat="b in s.BookingDetails">
+                        <td>{{b.Item.Name}}</td>
+                        <td>{{b.Price}}</td>
+                        <td>{{b.DiscountPrice}}</td>
+                        <td>{{b.Quantity}}</td>
+                        <td>{{b.TotalPrice}}</td>
+                    </tr>
+
+                </table>
+
+                <div ng-if="s.StatusName !='Delivered' && s.StatusName !='Cancelled'">
+
+                    <p>Do you want to cancel this booking? Please send us the reason for cancellation.</p>
+                    <input style="border:1px solid lightgrey;" class="w-100" ng-disabled="s.StatusName =='Delivered' || s.StatusName =='Cancelled'" type="text" ng-model="s.CancelRemarks">
+                    <br>
+                    <div style="text-align:right;">
+                        <a style="color:red;" ng-click="CancelItem(s)">Cancel</a>
+                    </div>
+                    <br>
+                </div>
+
+                <div ng-if="s.StatusName =='Cancelled'">
+
+                    <p>Cancel Remarks : {{s.CancelRemarks}}</p>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,62 @@
+<ion-view view-title="Home" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <div class="text-center">
+            <img src="images/logo.png" class="w-50">
+        </div>
+        <br>
+        <div class="center-text">
+            <h3>Summary Of Today</h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col" ng-click="goSalesBooked()">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.New}}</h3>
+                    <p>Booked</p>
+                </div>
+            </div>
+            <div class="col" ng-click="goSalesApproved()">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.Approved}}</h3>
+                    <p>Approved</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" ng-click="goSalesPacked()">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.Packed}}</h3>
+                    <p>Packed</p>
+                </div>
+            </div>
+            <div class="col" ng-click="goSalesCancelled()">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.Cancelled}}</h3>
+                    <p>Cancelled</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" ng-click="goSalesDelivered()">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.Delivered}}</h3>
+                    <p>Delivered</p>
+                </div>
+            </div>
+            <div class="col" ng-click="goSales()">
+                <div class="card card-dash pad-2 text-center">
+                    <h3>{{DashBoardCounts.New + DashBoardCounts.Approved + DashBoardCounts.Packed + DashBoardCounts.Cancelled + DashBoardCounts.Delivered}}</h3>
+                    <p>Total</p>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

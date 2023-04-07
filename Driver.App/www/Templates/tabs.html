@@ -1,0 +1,48 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+    <ion-side-menu-content>
+
+        <ion-nav-bar class="bar-positive">
+
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button ng-if="IsLoggedIn" ui-sref="notifications" class="button button-icon button-clear ion-ios-bell">({{NotifiCount}})</button>
+            </ion-nav-buttons>
+
+        </ion-nav-bar>
+
+        <ion-nav-view name="menuContent"></ion-nav-view>
+
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" class="side-menucus ">
+        <ion-header-bar class="side-barcus sidehead ">
+            <h1 class="title title-cus sidehead">Welcome {{TokenInfo.UserName}}</h1>
+        </ion-header-bar>
+        <ion-content style="width:100vh;">
+            <ul class="list side-list ">
+                <li><a href="#/tab/home" class="item" menu-close><i class="icon ion-ios-home"></i> Home</a></li>
+
+                <li><a href="#/tab/Orders" class="item" menu-close><i class="icon ion-android-car"></i> Delivrey</a></li>
+
+                <li><a href="#/tab/MyOrders" class="item" menu-close><i class="icon ion-android-checkbox"></i> My Orders</a></li>
+
+
+                <li><a href="#/tab/HFOrders" class="item" menu-close><i class="icon ion-android-car"></i> HF Delivrey</a></li>
+
+                <li><a href="#/tab/HFMyOrders" class="item" menu-close><i class="icon ion-android-checkbox"></i> HF My Orders</a></li>
+
+                <li><a href="#/tab/changepassword" class="item" menu-close><i class="icon ion-lock-combination"></i> Change Password</a></li>
+
+                <li><a href="" ng-click="logOut()" class="item" menu-close><i class="icon ion-log-out"></i> Log Out</a></li>
+
+            </ul>
+        </ion-content>
+    </ion-side-menu>
+
+</ion-side-menus>

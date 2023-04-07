@@ -1,0 +1,63 @@
+<ion-view view-title="Item Details" class="" cache-view="false">
+    <ion-content class="background padding" overflow-scroll="false">
+
+        <div class="card text-center">
+            <p class='mar-0' ng-if="LocationSelected" ui-sref="locations">Delivering Near to {{LocInfo.Name}} <a> Change</a></p>
+            <p class='mar-0' ng-if="!LocationSelected" ui-sref="locations">Select Nearby Location Point </p>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <span class="octag" ng-if="Item.InActive">Not Available</span>
+                <img class="w-100" style="border-radius:10px;" src="{{basePath}}{{Item.Image}}">
+                <span style="color:red;" ng-if="Item.Shop.StartTime > CurrentTime || Item.Shop.EndTime < CurrentTime"><b>Closed</b></span>
+                <span style="color:green;" ng-if="Item.Shop.StartTime < CurrentTime && Item.Shop.EndTime > CurrentTime"><b>Open Now</b></span>
+            </div>
+            <div class="col">
+                <h3>{{Item.Name}}</h3>
+                <p>{{Item.ItemsCategory.Name}}</p>
+                <p style="color:darkgreen;" ng-if="Item.Offer.Id <= 0">RS {{Item.Price}} /-</p>
+                <p ng-if="Item.Offer.Id > 0" style="color:darkgreen;">RS <del style="color:red;">{{Item.Price}}</del> {{Item.OfferPrice}} /-</p>
+                <p>From {{Item.Shop.Name}}</p>
+            </div>
+        </div>
+
+        <div class="center-text">
+            <h4> Book On Whatsapp : {{CompanyProfile.WhatsappNo}} / Call Us : {{CompanyProfile.MobileNo}} </h4>
+        </div>
+        <br>
+        <div class="pad-l5 mar-t2 center-text">
+            <div class="btn-group">
+                <button class="pbtn1" ng-click="dcrQty()"> <i class="icon ion-minus"></i> </button>
+                <button> {{Item.Quantity}} </button>
+                <button ng-click="incrQty()"> <i class="icon ion-plus"></i> </button>
+                <button class="pbtn2" ng-click="AddToCart()"> Add To Cart <i class="icon ion-ios-cart"></i></button>
+            </div>
+        </div>
+        <br>
+        <h5>Shop Info</h5>
+        <div class="row">
+            <div class="col">
+                <img class="w-100" style="border-radius:10px;" src="{{basePath}}{{Item.Shop.Image}}">
+            </div>
+            <div class="col">
+                <h4>{{Item.Shop.Name}}</h4>
+                <button class="ratbutton"> <i class="icon icon ion-star"></i> {{Item.Shop.AverageRating}} / 5</button>
+                <p>{{Item.Shop.ShopCategory.Name}}</p>
+                <p>Min Order : RS {{Item.Shop.AverageCost}} /-</p>
+                <a style="float: right;color: #f10d1b;" ng-click="goToShopDetails(Item.ShopId)"><b>View Details</b></a>
+            </div>
+        </div>
+        <br>
+        <h5>Images</h5>
+        <div class="list card" ng-repeat="o in Item.ItemImages">
+
+            <div class="item item-body pad-0">
+                <img class="full-image" src="{{basePath}}{{o.Image}}">
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

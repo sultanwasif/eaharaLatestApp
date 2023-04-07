@@ -1,0 +1,145 @@
+<ion-view view-title="Check Out" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background padding" overflow-scroll="false">
+
+        <div ng-show="ViewAdd == 0">
+
+            <div class="row" ng-if="IsLoggedIn == true">
+                <div class="col">
+
+                </div>
+                <div class="col right-text pad-r5 explore">
+                    <a ng-click="ShowAddress()">Select Address</a>
+                </div>
+            </div>
+
+            <div class="list list-inset" ng-if="IsLoggedIn == false">
+                <label class="item item-input">
+                    <input type="text" placeholder="Name" ng-model="Booking.Name">
+                </label>
+            </div>
+
+            <div class="list list-inset" ng-if="IsLoggedIn == false">
+                <label class="item item-input">
+                    <input type="number" placeholder="Mobile No" ng-model="Booking.MobileNo">
+                </label>
+            </div>
+
+            <div class="list list-inset" ng-if="IsLoggedIn == false">
+                <label class="item item-input">
+                    <input type="text" placeholder="Email" ng-model="Booking.EmailId">
+                </label>
+            </div>
+
+            <!--
+            <div>
+                <div class="item item-input controls">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input id="booking-sell-delivery-input" type="text" placeholder="Search Location" data-tap-disabled="true" ng-change='disableTap()' ng-model="search">
+                </div>
+                <div id="booking-sell-delivery-map" data-tap-disabled="true"></div>
+            </div>
+-->
+            <br>
+            <p>Adddress</p>
+            <!--
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <select class="form-control w-100" style="border:none;" ng-options=" s.Id as s.Name for s in Locations " ng-model="Booking.LocationId "></select>
+                </label>
+            </div>
+-->
+
+            <div class="list list-inset ">
+                <label class="item item-input ">
+                    <textarea type="text " rows="6 " placeholder="Address" ng-model="Booking.Address "></textarea>
+                </label>
+            </div>
+
+            <div class="list list-inset ">
+                <label class="item item-input " style="border:none;">
+                    <ion-checkbox style="border:none;" ng-model="Booking.IsOrderLater" value="true">Is Future Order?</ion-checkbox>
+                </label>
+            </div>
+
+            <div class="list list-inset " ng-if="Booking.IsOrderLater == true">
+                <label class="item item-input ">
+                    <input type="date" placeholder="" ng-model="Booking.OrderDate">
+                </label>
+            </div>
+
+            <div class="list list-inset " ng-if="Booking.IsOrderLater == true">
+                <label class="item item-input ">
+                    <input type="text" placeholder="Time" ng-model="Booking.Time">
+                </label>
+            </div>
+
+            <div class="list list-inset ">
+                <label class="item item-input ">
+                    <textarea type="text " rows="6 " placeholder="Remarks" ng-model="Booking.Remarks "></textarea>
+                </label>
+            </div>
+
+            <div class="list list-inset" ng-if="IsLoggedIn == true  && Booking.IsOffer == false">
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" placeholder="Promo Code" ng-model="Booking.Code">
+                    </label>
+                    <button class="button button-small" ng-click="checkCode()">
+                        Check
+                    </button>
+                </div>
+            </div>
+            <div class="list list-inset" ng-if="IsLoggedIn == true && Booking.IsOffer == true">
+                <div class="item item-input-inset">
+                    <div class="row">
+                        <div class="col">
+                            <p style="color:green">Offer Applied</p>
+                            <p style="color:green">{{Offer.Tittle}}</p>
+                        </div>
+                        <div class="col">
+                            <a style="color:red" ng-click="RemoveOffer()">Remove Offer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card " ng-if="IsLoggedIn == true">
+                <div class="item item-text-wrap ">
+                    <p><b>My Wallet : {{Customer.Points}}</b></p>
+                    <br>
+                    <p>You can spend up to {{CompanyProfile.WalletLimit}} RS/- on each booking.</p>
+                    <br> <a ng-click="UseWallet()">Use Wallet</a>
+                </div>
+            </div>
+
+            <div class="card ">
+                <div class="item item-text-wrap ">
+                    Sub Total : {{SubTotal}} RS /-
+                    <br> Wallet Cash : RS {{WalletCash}} /-
+                    <br> Delivery Charge : {{TotalDeliveryCharge}} RS /-
+                </div>
+            </div>
+
+
+            <div class="padding ">
+                <button class="button button-block button-balanced " ng-click="PlaceOrder() "> Place Order {{Total}} RS/- </button>
+            </div>
+
+        </div>
+
+        <div ng-if="ViewAdd == 1">
+            <div class="card shopcardhome pad-2" ng-repeat="i in Address" ng-click="SelectAddress(i)">
+                <div class="item item-text-wrap pad-0">
+                    <p>{{i.Title}}</p>
+                    <p>{{i.Description}}</p>
+                    <p>{{i.Location}}</p>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

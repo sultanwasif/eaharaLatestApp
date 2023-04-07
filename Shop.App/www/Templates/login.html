@@ -1,0 +1,40 @@
+<ion-view view-title="Login" name="login-view" class="login" hide-back-button="true" cache-view="false">
+    <ion-content class="loginback padding" overflow-scroll="false">
+
+        <div class="mar-t20 pad-l5 pad-r5">
+
+            <div class="text-center" style="background-color: rgba(255, 255, 255, 0.58039);">
+                <img src="images/logo.png" class="w-80">
+                <p style="color: #000">Restaurant App</p>
+            </div>
+
+            <br>
+
+            <div>
+
+                <div class="list list-inset">
+                    <label class="item item-input item-login" style="border-color: #000;">
+                        <i class="icon ion-android-contact placeholder-icon login-icon"></i>
+                        <input type="text" placeholder="Username" ng-model="User.UserName">
+                    </label>
+                </div>
+
+                <div class="list list-inset">
+                    <label class="item item-input item-login" style="border-color: #000;">
+                        <i class="icon ion-lock-combination placeholder-icon login-icon"></i>
+                        <input type="password" placeholder="Password" ng-model="User.Password">
+                    </label>
+                </div>
+
+                <br>
+
+                <div class="center-text mar-t3">
+                    <button class="button button-assertive login-button w-100" ng-click="login()">Login</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

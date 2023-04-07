@@ -1,0 +1,37 @@
+<ion-view view-title="My Offers" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <div class="card shopcardhome" ng-repeat="i in Items">
+            <div class="item item-text-wrap pad-0">
+                <div class="row">
+                    <div class="col-25">
+                        <img class="w-100" style="height: 10vh; border-radius: 10px;" src="{{basePath}}{{i.Image}}">
+                    </div>
+                    <div class="col-75">
+                        <div class="pad-l5">
+                            <h2 class="">{{i.Tittle}} </h2>
+                            <p>{{i.Percentage}} </p>
+                            <p ng-if="i.IsPercentage == true">Is Percentage : Yes </p>
+                            <p ng-if="i.IsPercentage != true">Is Percentage : No </p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row center-text">
+                    <div class="col">
+                        <a ng-click="Delete(i.Id)">Delete</a>
+                    </div>
+                    <div class="col">
+                        <a ng-click="edit(i.Id)">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

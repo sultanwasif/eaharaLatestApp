@@ -1,0 +1,45 @@
+<ion-view view-title="HF Delivery" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <div class="card shopcardhome" ng-repeat="o in Orders">
+            <div class="item item-text-wrap pad-1">
+
+                <div ng-click="godetails(o)">
+                    <p># : {{o.RefNo}}</p>
+                    <p>Total : {{o.Total}}</p>
+                    <p>Status : {{o.StatusName}}</p>
+                    <p>Shop : {{o.Shop.Name}}</p>
+                    <p>Customer : {{o.Name}}</p>
+                    <p>Cus No : {{o.MobileNo}}</p>
+                    <p>Address : {{o.Address}}</p>
+                    <p>Remarks : {{o.Remarks}}</p>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <a class="btn" href="tel:{{o.MobileNo}}" ng-click="SaveStatus(b)">Call Customer</a>
+                    </div>
+                    <div class="col">
+                        <button class="btn" style="color:red;" ng-click="MarkPicked(o)">Save As Picked</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn" style="color:red;" ng-click="MarkDelivered(o)">Save As Delivered</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card" ng-if="Orders.length == 0">
+            <div class="item">
+                <p>No Data !!!</p>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

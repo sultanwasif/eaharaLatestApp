@@ -1,0 +1,44 @@
+<ion-view view-title="Add Offer" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <p>Title</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Offer.Tittle">
+            </label>
+        </div>
+
+        <p>Value</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="number" placeholder="" ng-model="Offer.Percentage">
+            </label>
+        </div>
+
+        <p>Is Percentage</p>
+        <div class="list list-inset">
+            <ion-list>
+                <ion-checkbox ng-model="Offer.IsPercentage">Is Percentage</ion-checkbox>
+            </ion-list>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button ng-click="takePicture()" class="">Get pic</button>
+            </div>
+            <div class="col">
+                <img ng-src="{{Offer.Image}}">
+            </div>
+        </div>
+
+        <button class="button button-block button-assertive" ng-click="SaveItem()" style="color: black">
+            Save Item
+        </button>
+
+
+    </ion-content>
+</ion-view>

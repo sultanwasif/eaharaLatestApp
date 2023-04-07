@@ -1,0 +1,72 @@
+<ion-view view-title="Add Item" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding" overflow-scroll="false">
+
+        <p>Item Name</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Item.Name">
+            </label>
+        </div>
+
+        <p>Price</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="number" placeholder="" ng-model="Item.Price">
+            </label>
+        </div>
+
+        <p>Category</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <select class="w-100" ng-options="c.Id as c.Name for c in ItemCategories" type="text" value="" ng-model="Item.ItemCategoryId"></select>
+            </label>
+        </div>
+
+        <p>Offer</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <select class="w-100" ng-options="o.Id as o.Tittle for o in Offers" type="text" value="" ng-model="Item.OfferId"></select>
+            </label>
+        </div>
+
+        <p>Food Preference </p>
+        <div class="list list-inset">
+            <ion-list>
+                <ion-radio ng-model="Item.Preference" ng-value="'Non-Vegetarian'">Non-Vegetarian</ion-radio>
+                <ion-radio ng-model="Item.Preference" ng-value="'Vegetarian'">Vegetarian</ion-radio>
+            </ion-list>
+        </div>
+
+        <p>TagLine</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="Item.TagLine">
+            </label>
+        </div>
+
+        <p>Description</p>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <textarea rows="5" placeholder="" ng-model="Item.Description"> </textarea>
+            </label>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button ng-click="takePicture()" class="">Get pic</button>
+            </div>
+            <div class="col">
+                <img ng-src="{{Item.Image}}">
+            </div>
+        </div>
+
+        <button class="button button-block button-assertive" ng-click="SaveItem()" style="color: black">
+            Save Item
+        </button>
+
+
+    </ion-content>
+</ion-view>

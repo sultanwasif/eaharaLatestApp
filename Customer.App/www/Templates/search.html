@@ -1,0 +1,78 @@
+<ion-view view-title="Search" class="" hide-back-button="true" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-content class="background" overflow-scroll="false">
+
+        <div class="card text-center">
+            <p class='mar-0' ng-if="LocationSelected" ui-sref="locations">Delivering Near to {{LocInfo.Name}} <a> Change</a></p>
+            <p class='mar-0' ng-if="!LocationSelected" ui-sref="locations">Select Nearby Location Point </p>
+        </div>
+
+
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" ng-model="SearchTab.Keyword" ng-change="updateList()" placeholder="Search">
+            </label>
+            <button class="button button-balanced clradj" ng-click="Search()">
+                Go
+            </button>
+        </div>
+
+        <div class="card shopcardhome" ng-repeat="s in Shops | orderBy:'Order'" ng-click="goToShopDetails(s.Id)">
+            <div class="item item-text-wrap pad-0">
+                <div class="row">
+                    <div class="col-25">
+
+                        <img class="w-100" src="{{basePath}}{{s.Image}}">
+                        <span style="color:red;" ng-if="s.StartTime > CurrentTime || s.EndTime < CurrentTime">Closed</span>
+                        <span style="color:green;" ng-if="s.StartTime < CurrentTime && s.EndTime > CurrentTime">Open Now</span>
+                    </div>
+                    <div class="col-75">
+                        <div class="row">
+                            <div class="col">
+                                <h2>{{s.Name}}</h2>
+                            </div>
+                            <div class="col right-text">
+                                <p style="color:green;"> <i class="icon icon ion-star"></i> {{s.AverageRating}} / 5 </p>
+                            </div>
+                        </div>
+                        <div class="pad-l5">
+                            <p>{{s.TagLine}}</p>
+                            <p>Min Order : {{s.AverageCost}} RS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shopcardhome" ng-repeat="i in Items" ng-click="GoItemDetail(i.Id)">
+            <div class="item item-text-wrap pad-0">
+                <div class="row">
+                    <div class="col-25">
+                        <span class="octag" ng-if="i.InActive">Not Available</span>
+                        <img class="w-100" src="{{basePath}}{{i.Image}}">
+                    </div>
+                    <div class="col-75">
+                        <div class="pad-l5">
+                            <h2 class="">{{i.Name}} </h2>
+                            <p>From {{i.Shop.Name}}</p>
+                            <p style="color:darkgreen;" ng-if="i.Offer.Id <= 0">RS {{i.Price}} /-</p>
+                            <p ng-if="i.Offer.Id > 0" style="color:darkgreen;">RS <del style="color:red;">{{i.Price}}</del> {{i.OfferPrice}} /-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mar-t15 center-text" ng-if="Items.length <= 0 && Shops.length <= 0">
+            <img src="images/empty.png" class="w-30">
+            <br>
+            <br>
+            <p>No Items Found ! </p>
+        </div>
+
+
+    </ion-content>
+</ion-view>

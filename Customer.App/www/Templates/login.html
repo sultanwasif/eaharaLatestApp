@@ -1,0 +1,53 @@
+<ion-view view-title="Login" name="login-view" class="login" hide-back-button="true" cache-view="false">
+    <ion-content class="back-img" overflow-scroll="false">
+
+
+        <div class="mar-t5">
+            <div class="padding loginarea">
+
+                <div class="text-center">
+                    <img src="images/logo.png" class="w-50">
+                </div>
+
+                <br>
+
+                <div>
+
+                    <div class="list mar-bp1">
+                        <label class="item item-input log-input">
+                            <input type="text" placeholder="Username/Mobile No" ng-model="User.UserName">
+                        </label>
+                    </div>
+                    <br>
+                    <div class="list mar-bp1">
+                        <label class="item item-input log-input">
+                            <input type="password" placeholder="Password" ng-model="User.Password">
+                        </label>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="">
+                                <a class="clr-white" ui-sref="register">Get New Account</a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="right-text">
+                                <a class="clr-white" ui-sref="TroubleLogin">Trouble login ?</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="center-text mar-t3">
+                        <button class="button button-assertive login-button w-50" ng-click="login()">Login</button>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
